@@ -83,11 +83,6 @@ dependencies {
 		spec.version = "b1.7.3-${project.yarn_mappings}"
 	}
 
-	// convenience stuff
-	// adds some useful annotations for data classes. does not add any dependencies
-	compileOnly 'org.projectlombok:lombok:1.18.16'
-	annotationProcessor 'org.projectlombok:lombok:1.18.16'
-
 	modImplementation "com.github.minecraft-cursed-legacy:cursed-fabric-loader:${project.loader_version}"
 
 	shadow "org.scala-lang:scala-library:${project.scala}"

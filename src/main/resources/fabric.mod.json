@@ -17,10 +17,6 @@
 
   "environment": "*",
 
-  "entrypoints": {
-
-  },
-
   "languageAdapters": {
     "scala": "kz.chesschicken.scalaadapter.CursedFabricScalaAdapter"
   },
