@@ -21,7 +21,7 @@ dependencies {
 }
 ```
 
-2. Otherwise, you can just download and `modImplement` jar files from published `Releases`
+2. Otherwise, you can just download and `modImplementation` jar file (-dev) from published `Releases`
 
 After implementing, change your entrypoint in the `fabric.mod.json`.
 ```json
