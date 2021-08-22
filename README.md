@@ -1,25 +1,43 @@
-# Fabric Example Mod with StationAPI and BIN Mappings for beta 1.7.3 server + client (Scala Edition)
+# CursedFabricScala
 
-## Setup
+CursedFabricScala - is small mod adapter for cursed-fabric-loader allowing coding and running mods written on scala.
+## Usage for Modders
+Firstly, add this mod as dependency and make sure to have scala sdk.
 
-[See the StationAPI wiki.](https://github.com/ModificationStation/StationAPI)
+You can choose two ways to implement this library into your project.
 
-## Common Issues
+1. This mod uses [jitpack.io](https://jitpack.io/) for building and distributing jars. For newer or old versions, [look here](https://jitpack.io/#ChessChicken-KZ/CursedFabricScala/).
+```groovy
+repositories {
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+```
 
-[Here.](https://github.com/calmilamsy/BIN-fabric-example-mod#common-issues)
+```groovy
+dependencies {
+    modImplementation "com.github.ChessChicken-KZ:CursedFabricScala:144536805d"
+}
+```
+
+2. Otherwise, you can just download and `modImplement` jar files from published `Releases`
+
+After implementing, change your entrypoint in the `fabric.mod.json`.
+```json
+"entrypoints": {
+  "main":
+  [
+    {
+      "adapter": "scala",
+      "value": "stuff.ScalaClazz"
+    }
+  ]
+}
+```
+
+## Setup and Building
+For setup instructions, please refer to [BIN-fabric-example-mod](https://github.com/calmilamsy/BIN-fabric-example-mod) (quite old).
 
 ## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
-
-
-**I moved my project and everything broke!**  
-Go into run configurations and double check your `VM Options` and `Working Directory` parameters.
-
-**X mixin isnt working!**  
-Double check your target and method parameters and make sure you have filled out your `@At` parameter if required.  
-If you are still having issues, join the [ModStation Discord](https://discord.gg/8Qky5XY) and contact someone there.
-
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+The project is under [Apache License 2.0](https://raw.githubusercontent.com/ChessChicken-KZ/CursedFabricScala/local/LICENSE). Feel free to read the document.
