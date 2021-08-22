@@ -28,7 +28,7 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = project.archives_base_name
-version = project.mod_version + "-" + project.scala
+version = project.mod_version + "-scala" + project.scala
 group = project.maven_group
 
 idea {
@@ -105,9 +105,12 @@ processResources {
 }
 
 shadowJar {
+	classifier = 'run'
 	configurations = [project.configurations.shadow]
 	exclude "META-INF"
 }
+
+build.dependsOn shadowJar
 
 // ensure that the encoding is set to UTF-8, no matter what the system default is
 // this fixes some edge cases with special characters not displaying correctly
