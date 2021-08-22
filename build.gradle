@@ -6,6 +6,7 @@ buildscript {
 		}
 		gradlePluginPortal()
 		mavenCentral()
+		jcenter()
 		maven {
 			name = "Jitpack"
 			url 'https://jitpack.io/'
@@ -19,7 +20,6 @@ buildscript {
 plugins {
 	id 'maven-publish'
 	id 'scala'
-	id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
 
 apply plugin: "fabric-loom"
@@ -51,13 +51,33 @@ repositories {
 	mavenLocal()
 	gradlePluginPortal()
 	mavenCentral()
+	jcenter()
 	maven {
 		name = "Jitpack"
 		url 'https://jitpack.io/'
 	}
+	maven {
+		name = "Glass"
+		url "https://maven.glass-launcher.net/repo/"
+	}
 }
 
 minecraft {
+}
+
+sourceSets {
+	main {
+		scala {
+			outputDir = file("$buildDir/classes/scala/main")
+		}
+		java {
+			outputDir = file("$buildDir/classes/java/main")
+		}
+	}
+}
+
+configurations {
+	compileAndFat
 }
 
 dependencies {
@@ -83,18 +103,28 @@ dependencies {
 		spec.version = "b1.7.3-${project.yarn_mappings}"
 	}
 
+	// convenience stuff
+	// adds some useful annotations for data classes. does not add any dependencies
+	compileOnly 'org.projectlombok:lombok:1.18.16'
+	annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+	// adds some useful annotations for miscellaneous uses. does not add any dependencies, though people without the lib will be missing some useful context hints.
+	compile 'org.jetbrains:annotations:16.0.2'
+
 	modImplementation "com.github.minecraft-cursed-legacy:cursed-fabric-loader:${project.loader_version}"
 
-	shadow "org.scala-lang:scala-library:${project.scala}"
-	shadow "org.scala-lang:scala-reflect:${project.scala}"
-	shadow "org.scala-lang:scala-compiler:${project.scala}"
+	compileAndFat "org.scala-lang:scala-library:${project.scala}"
+	compileAndFat "org.scala-lang:scala-reflect:${project.scala}"
+	compileAndFat "org.scala-lang:scala-compiler:${project.scala}"
+	compileAndFat "org.scala-lang.modules:scala-java8-compat_2.13:1.0.0"
+
+	configurations.compile.extendsFrom(configurations.compileAndFat)
 }
 
 processResources {
 	inputs.property "version", project.version
 
 	from(sourceSets.main.resources.srcDirs) {
-		duplicatesStrategy = 'include'
 		include "fabric.mod.json"
 		expand "version": project.version
 	}
@@ -104,13 +134,19 @@ processResources {
 	}
 }
 
-shadowJar {
-	classifier = 'run'
-	configurations = [project.configurations.shadow]
-	exclude "META-INF"
+
+task createFatJar(type: Jar) {
+	classifier = "fat"
+
+	from { configurations.compileAndFat.collect {
+		String[] a = it.toString().replace('\\', '/').split('/')
+		if(a[a.length - 1].startsWith("scala"))
+			it.isDirectory() ? it : zipTree(it)
+	} }
+	with jar
 }
 
-build.dependsOn shadowJar
+build.finalizedBy(createFatJar)
 
 // ensure that the encoding is set to UTF-8, no matter what the system default is
 // this fixes some edge cases with special characters not displaying correctly
@@ -150,14 +186,6 @@ publishing {
 			artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}-dev.jar") {
 				classifier 'dev'
 				builtBy remapJar
-			}
-
-			pom.withXml {
-				asNode().dependencies.dependency.each { dep ->
-					if(dep.artifactId.last().value().last().toLowerCase() in ["cursed-fabric-loader"]) {
-						assert dep.parent().remove(dep)
-					}
-				}
 			}
 		}
 	}
