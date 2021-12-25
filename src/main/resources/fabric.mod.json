@@ -8,7 +8,8 @@
   "description": "A small mod adapter allowing coding and running mods written on scala.",
 
   "authors": [
-    "ChessChicken-KZ"
+    "ChessChicken-KZ",
+    "Scala"
   ],
   "contact": {
     "sources": "https://github.com/ChessChicken-KZ/CursedFabricScala"
