@@ -2,19 +2,19 @@
   "schemaVersion": 1,
   "id": "cursedfabricscala",
   "version": "${version}",
-  "icon": "assets/cursedfabricscala/icon.png",
 
   "name": "Cursed Fabric Scala",
   "description": "A small mod adapter allowing coding and running mods written on scala.",
 
   "authors": [
     "ChessChicken-KZ",
-    "Scala"
+    "Scala developers"
   ],
   "contact": {
     "sources": "https://github.com/ChessChicken-KZ/CursedFabricScala"
   },
 
+  "icon": "assets/cursedfabricscala/icon.png",
   "license": "Apache License 2.0",
 
   "environment": "*",
@@ -24,6 +24,7 @@
   },
 
   "depends": {
+    "fabricloader": ">=0.13.3",
     "minecraft": "1.0.0-beta.7.3"
   },
 

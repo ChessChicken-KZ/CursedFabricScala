@@ -9,13 +9,13 @@ class CursedFabricScalaAdapter extends LanguageAdapter {
       val instance = Class.forName(value + "$").getField("MODULE$").get(null).asInstanceOf[T]
 
       if(instance != null)
-        return instance
+        instance
       else
         throw new IllegalArgumentException("Not found.")
     } catch {
-      case exception: Exception => {
+      case _: Exception => {
         println(s"Could not find ${clazz.getName}$$MODULE$$")
-        return clazz.newInstance()
+        clazz.newInstance()
       }
 
     }
