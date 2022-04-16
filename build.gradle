@@ -82,7 +82,7 @@ java {
 tasks.build.dependsOn tasks.shadowJar
 
 shadowJar {
-	archiveClassifier.set('')
+	archiveClassifier.set('shadow')
 	configurations = [project.configurations.shadow_]
 }
 
