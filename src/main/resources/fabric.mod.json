@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Cursed Fabric Scala",
-  "description": "A small mod adapter allowing coding and running mods written on scala.",
+  "description": "A small mod adapter and scala libraries provider allowing coding and running mods written on scala.",
 
   "authors": [
     "ChessChicken-KZ",
