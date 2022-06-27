@@ -72,9 +72,8 @@ dependencies {
 	implementation 'org.slf4j:slf4j-api:1.8.0-beta4'
 	implementation 'org.apache.logging.log4j:log4j-slf4j18-impl:2.17.2'
 
-	shadow_ "org.scala-lang:scala-library:${project.scala}"
-	shadow_ "org.scala-lang:scala-reflect:${project.scala}"
-	shadow_ "org.scala-lang:scala-compiler:${project.scala}"
+	shadow_ "org.scala-lang:scala3-library_3:${project.scala}"
+	shadow_ 'org.scala-lang:scala-library:2.13.8'
 }
 
 processResources {
