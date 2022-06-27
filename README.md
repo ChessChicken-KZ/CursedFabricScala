@@ -37,7 +37,7 @@ After implementing, change your entrypoint in the `fabric.mod.json`.
 ```
 
 ## Setup and Building
-For setup instructions, please refer to [BIN-fabric-example-mod](https://github.com/calmilamsy/BIN-fabric-example-mod) (quite old).
+For setup instructions, please refer to [stationapi-example-mod](https://github.com/calmilamsy/stationapi-example-mod/tree/dev/12).
 
 ## License
 The project is under [Apache License 2.0](https://raw.githubusercontent.com/ChessChicken-KZ/CursedFabricScala/local/LICENSE_CFS). Feel free to read the document.
