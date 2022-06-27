@@ -28,16 +28,6 @@ repositories {
 		name = 'Glass Releases'
 		url = 'https://maven.glass-launcher.net/releases'
 	}
-	// Used for StationAPI and HowManyItems.
-	maven {
-		name = 'Glass Snapshots'
-		url = 'https://maven.glass-launcher.net/snapshots'
-	}
-	// Used for a StationAPI dependency.
-	maven {
-		name = 'Froge'
-		url 'https://maven.minecraftforge.net/'
-	}
 	// Used for projects that do not have a maven repository, but do have a GitHub repository with working build scripts.
 	maven {
 		name = 'Jitpack'
