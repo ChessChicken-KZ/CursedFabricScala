@@ -1,4 +1,5 @@
 # CursedFabricScala
+[![](https://jitpack.io/v/ChessChicken-KZ/CursedFabricScala.svg)](https://jitpack.io/#ChessChicken-KZ/CursedFabricScala)
 
 CursedFabricScala - is small mod adapter for cursed-fabric-loader allowing coding and running mods written on scala.
 ## Usage for Modders
