@@ -18,7 +18,7 @@ repositories {
 
 ```groovy
 dependencies {
-    modImplementation "com.github.ChessChicken-KZ:CursedFabricScala:f6dd9f0fb9"
+    modImplementation "com.github.ChessChicken-KZ:CursedFabricScala:0.2-3.1.3"
 }
 ```
 
