@@ -9,9 +9,7 @@
 
 **CursedFabricScala** - a small mod adapter for `babric` allowing coding and running mods written on scala.
 ## Usage for Modders
-Firstly, add this mod as dependency and make sure to have scala sdk.
-
-1. This mod uses [jitpack.io](https://jitpack.io/) for building and distributing jars. For newer or older versions, [consider checking this page](https://jitpack.io/#ChessChicken-KZ/CursedFabricScala/).
+This mod uses [jitpack.io](https://jitpack.io/) for building and distributing jars. For newer or older versions, [consider checking this page](https://jitpack.io/#ChessChicken-KZ/CursedFabricScala/).
 ```groovy
 repositories {
     maven {
